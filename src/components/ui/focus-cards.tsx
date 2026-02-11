@@ -54,10 +54,7 @@ export const Card = React.memo(
 
 Card.displayName = "Card";
 
-type CardType = {
-    title: string;
-    src: string;
-};
+
 
 export function FocusCards({ cards }: { cards: CardType[] }) {
     const [hovered, setHovered] = useState<number | null>(null);
