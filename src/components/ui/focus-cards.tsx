@@ -13,38 +13,56 @@ export const Card = React.memo(
         setHovered,
         onClick,
     }: {
-        card: any;
-        index: number;
-        hovered: number | null;
-        setHovered: React.Dispatch<React.SetStateAction<number | null>>;
-        onClick: () => void;
-    }) => (
-        <motion.div
-            layoutId={`card-${card.title}-${index}`}
-            onMouseEnter={() => setHovered(index)}
-            onMouseLeave={() => setHovered(null)}
-            onClick={onClick}
+    type CardType = {
+        title: string;
+        src: string;
+    };
+
+    export const Card = React.memo(
+        ({
+            card,
+            index,
+            hovered,
+            setHovered,
+            onClick,
+        }: {
+            card: CardType;
+            index: number;
+            hovered: number | null;
+            setHovered: React.Dispatch<React.SetStateAction<number | null>>;
+            onClick: () => void;
+        }) => (
+            index: number;
+    hovered: number | null;
+    setHovered: React.Dispatch<React.SetStateAction<number | null>>;
+    onClick: () => void;
+}) => (
+    <motion.div
+        layoutId={`card-${card.title}-${index}`}
+        onMouseEnter={() => setHovered(index)}
+        onMouseLeave={() => setHovered(null)}
+        onClick={onClick}
+        className={cn(
+            "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer",
+            hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+        )}
+    >
+        <Image
+            src={card.src}
+            alt={card.title}
+            fill
+            className="object-cover absolute inset-0"
+        />
+        <div
             className={cn(
-                "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-96 w-full transition-all duration-300 ease-out cursor-pointer",
-                hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+                "absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end py-8 px-4 transition-opacity duration-300",
+                hovered === index ? "opacity-100" : "opacity-0"
             )}
         >
-            <Image
-                src={card.src}
-                alt={card.title}
-                fill
-                className="object-cover absolute inset-0"
-            />
-            <div
-                className={cn(
-                    "absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end py-8 px-4 transition-opacity duration-300",
-                    hovered === index ? "opacity-100" : "opacity-0"
-                )}
-            >
-                {/* {card.title} */}
-            </div>
-        </motion.div>
-    )
+            {/* {card.title} */}
+        </div>
+    </motion.div>
+)
 );
 
 Card.displayName = "Card";

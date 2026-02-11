@@ -109,6 +109,7 @@ function Map({ children, styles, ...props }: MapProps) {
       mapInstance.remove();
       mapRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
   useEffect(() => {
@@ -244,6 +245,7 @@ function MapMarker({
       markerElementRef.current = null;
       setIsReady(false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map, isLoaded]);
 
   useEffect(() => {
@@ -451,6 +453,7 @@ function MarkerTooltip({
       containerRef.current = null;
       setMounted(false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReady, map]);
 
   useEffect(() => {
@@ -766,6 +769,7 @@ function MapPopup({
       }
       popupRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
 
   useEffect(() => {

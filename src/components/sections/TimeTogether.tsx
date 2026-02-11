@@ -15,11 +15,11 @@ export default function TimeTogether() {
         seconds: 0,
     });
 
-    // Placeholder start date: Valentine's Day 2024
-    // TODO: Let user customize this via props or manual edit
-    const startDate = new Date("2025-05-13T14:20:00");
-
     useEffect(() => {
+        // Placeholder start date: Valentine's Day 2024
+        // TODO: Let user customize this via props or manual edit
+        const startDate = new Date("2025-05-13T14:20:00");
+
         const interval = setInterval(() => {
             const now = new Date();
             const difference = now.getTime() - startDate.getTime();
@@ -72,7 +72,7 @@ export default function TimeTogether() {
                 transition={{ delay: 0.5, duration: 1 }}
                 className="text-white/60 font-serif italic text-lg mt-12 text-center"
             >
-                "...and I've cherished every moment since May 13, 2025."
+                &quot;...and I&apos;ve cherished every moment since May 13, 2025.&quot;
             </motion.p>
         </section>
     );
