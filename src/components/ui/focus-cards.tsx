@@ -41,9 +41,7 @@ export const Card = React.memo(
                     hovered === index ? "opacity-100" : "opacity-0"
                 )}
             >
-                <div className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-                    {card.title}
-                </div>
+                {/* {card.title} */}
             </div>
         </motion.div>
     )
@@ -107,6 +105,7 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
                             />
 
                             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 to-transparent">
+                                {/* 
                                 <motion.h3
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -114,7 +113,8 @@ export function FocusCards({ cards }: { cards: CardType[] }) {
                                     className="text-3xl md:text-4xl font-bold text-white mb-2"
                                 >
                                     {selected.card.title}
-                                </motion.h3>
+                                </motion.h3> 
+                                */}
                             </div>
                         </motion.div>
                     </div>

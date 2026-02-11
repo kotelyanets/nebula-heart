@@ -7,9 +7,12 @@ import {
     Play,
     Pause,
     SkipBack,
+
     SkipForward,
     Shuffle,
     Repeat,
+    Volume2,
+    VolumeX,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { type ClassValue, clsx } from "clsx";
@@ -48,26 +51,25 @@ const CustomSlider = ({
     className?: string;
 }) => {
     return (
-        <motion.div
-            className={cn(
-                "relative w-full h-1 bg-white/20 rounded-full cursor-pointer",
-                className
-            )}
-            onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const percentage = (x / rect.width) * 100;
-                onChange(Math.min(Math.max(percentage, 0), 100));
-            }}
-        >
-            <motion.div
-                className="absolute top-0 left-0 h-full bg-white rounded-full"
-                style={{ width: `${value}%` }}
-                initial={{ width: 0 }}
-                animate={{ width: `${value}%` }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        <div className={cn("relative w-full h-4 flex items-center select-none", className)}>
+            <div className="absolute w-full h-1 bg-white/20 rounded-full overflow-hidden">
+                <motion.div
+                    className="h-full bg-white"
+                    style={{ width: `${value}%` }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${value}%` }}
+                    transition={{ type: "tween", duration: 0.1 }}
+                />
+            </div>
+            <input
+                type="range"
+                min={0}
+                max={100}
+                value={value || 0}
+                onChange={(e) => onChange(Number(e.target.value))}
+                className="absolute w-full h-full opacity-0 cursor-pointer z-10"
             />
-        </motion.div>
+        </div>
     );
 };
 
@@ -87,6 +89,8 @@ const AudioPlayer = ({
     const [duration, setDuration] = useState(0);
     const [isShuffle, setIsShuffle] = useState(false);
     const [isRepeat, setIsRepeat] = useState(false);
+    const [volume, setVolume] = useState(1);
+    const [isMuted, setIsMuted] = useState(false);
 
     const togglePlay = () => {
         if (audioRef.current) {
@@ -125,6 +129,27 @@ const AudioPlayer = ({
 
     const handleRepeat = () => {
         setIsRepeat(!isRepeat);
+    };
+
+    const handleVolumeChange = (value: number) => {
+        const newVolume = value / 100;
+        setVolume(newVolume);
+        if (audioRef.current) {
+            audioRef.current.volume = newVolume;
+        }
+        setIsMuted(newVolume === 0);
+    };
+
+    const toggleMute = () => {
+        if (audioRef.current) {
+            if (isMuted) {
+                audioRef.current.volume = volume || 1;
+                setIsMuted(false);
+            } else {
+                audioRef.current.volume = 0;
+                setIsMuted(true);
+            }
+        }
     };
 
     if (!src) return null;
@@ -282,6 +307,30 @@ const AudioPlayer = ({
                                     </Button>
                                 </motion.div>
                             </div>
+                        </motion.div>
+
+                        {/* Volume Control */}
+                        <motion.div className="flex items-center w-full px-2 gap-2 mt-2">
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleMute();
+                                }}
+                                className="text-white hover:bg-[#111111d1] hover:text-white h-6 w-6 rounded-full"
+                            >
+                                {isMuted || volume === 0 ? (
+                                    <VolumeX className="h-4 w-4" />
+                                ) : (
+                                    <Volume2 className="h-4 w-4" />
+                                )}
+                            </Button>
+                            <CustomSlider
+                                value={isMuted ? 0 : volume * 100}
+                                onChange={handleVolumeChange}
+                                className="w-full"
+                            />
                         </motion.div>
                     </motion.div>
                 </motion.div>
