@@ -58,7 +58,7 @@ export default function TimeTogether() {
             </div>
 
             {/* Timer Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 max-w-5xl mx-auto z-10">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-8 max-w-5xl mx-auto z-10">
                 <TimeUnit value={timeElapsed.years} label="Years" />
                 <TimeUnit value={timeElapsed.days} label="Days" />
                 <TimeUnit value={timeElapsed.hours} label="Hours" />
@@ -86,7 +86,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
             transition={{ type: "spring", stiffness: 100 }}
             className="flex flex-col items-center justify-center p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md"
         >
-            <span className="text-4xl md:text-6xl font-bold font-sans tabular-nums text-white">
+            <span className="text-3xl md:text-6xl font-bold font-sans tabular-nums text-white">
                 {String(value).padStart(2, "0")}
             </span>
             <span className="text-sm md:text-base text-white/50 uppercase tracking-widest mt-2">{label}</span>

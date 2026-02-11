@@ -161,8 +161,9 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS }: ParticleTextEffect
         const offscreenCtx = offscreenCanvas.getContext("2d")!
 
         // Draw text
+        const fontSize = Math.min(100, canvas.width / (word.length * 0.8));
         offscreenCtx.fillStyle = "white"
-        offscreenCtx.font = "bold 100px Arial"
+        offscreenCtx.font = `bold ${fontSize}px Arial`
         offscreenCtx.textAlign = "center"
         offscreenCtx.textBaseline = "middle"
         offscreenCtx.fillText(word, canvas.width / 2, canvas.height / 2)

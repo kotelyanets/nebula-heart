@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function ReasonsGrid() {
     return (
         <section className="container mx-auto px-4 py-20 min-h-screen flex flex-col items-center justify-center">
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-4 text-center">
+            <h2 className="text-3xl md:text-6xl font-serif text-white mb-4 text-center">
                 Reasons Why
             </h2>
             <p className="max-w-2xl text-lg md:text-xl text-white/60 text-center mb-12">

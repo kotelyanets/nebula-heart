@@ -59,16 +59,16 @@ export default function ValentineAsk() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         className="text-center space-y-12"
                     >
-                        <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight drop-shadow-xl">
+                        <h2 className="text-3xl md:text-7xl font-serif text-white tracking-tight drop-shadow-xl">
                             Will you be my Valentine?
                         </h2>
 
-                        <div className="flex items-center justify-center gap-12 relative h-40 w-full">
+                        <div className="flex items-center justify-center gap-6 md:gap-12 relative h-40 w-full">
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={handleYes}
-                                className="px-10 py-5 bg-pink-600/20 backdrop-blur-md border border-pink-500/50 rounded-full text-3xl font-bold text-white hover:bg-pink-600/40 transition-all shadow-[0_0_30px_rgba(236,72,153,0.5)] flex items-center gap-3 group z-20"
+                                className="px-6 py-3 md:px-10 md:py-5 bg-pink-600/20 backdrop-blur-md border border-pink-500/50 rounded-full text-xl md:text-3xl font-bold text-white hover:bg-pink-600/40 transition-all shadow-[0_0_30px_rgba(236,72,153,0.5)] flex items-center gap-3 group z-20"
                             >
                                 <Heart className="w-8 h-8 text-pink-500 fill-pink-500 group-hover:scale-125 transition-transform" />
                                 YES
@@ -79,7 +79,7 @@ export default function ValentineAsk() {
                                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                 onHoverStart={moveNoButton}
                                 onClick={moveNoButton}
-                                className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xl font-medium text-white/50 hover:text-white transition-colors absolute md:relative"
+                                className="px-4 py-2 md:px-8 md:py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-lg md:text-xl font-medium text-white/50 hover:text-white transition-colors absolute md:relative"
                                 style={{
                                     position: isHoveringNo ? 'absolute' : 'relative',
                                     left: isHoveringNo ? 'auto' : undefined,

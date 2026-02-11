@@ -90,14 +90,7 @@ export default function Home() {
 
       {/* Audio Player - Fixed */}
       <div className="fixed bottom-4 right-4 z-50">
-        <div className="hidden md:block">
-          <AudioPlayer src="/gallery/love_theme.mp3" title="Romantic Theme" />
-        </div>
-        {/* Simplified mobile view could be added here if needed */}
-        <div className="md:hidden">
-          {/* Render player but maybe scaled down? Or same component handles responsiveness */}
-          <AudioPlayer src="/gallery/love_theme.mp3" title="Romantic Theme" />
-        </div>
+        <AudioPlayer src="/gallery/love_theme.mp3" title="Romantic Theme" />
       </div>
     </main>
   );
