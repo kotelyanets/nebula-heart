@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 5, 5, 5;
+  --background-end-rgb: 5, 5, 5;
+}
+
+/* Remove conflicting body styles and ensure dark theme */
+html,
+body {
+  height: 100%;
+  background-color: #050505;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes transformAnim {
+  0% {
+    transform: translate(-55%);
+  }
+
+  100% {
+    transform: translate(55%);
+  }
+}
+
+@keyframes opacityAnim {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 0;
+  }
+}
+
+@keyframes letterAnim {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+    text-shadow: 0 0 4px #fff;
+    transform: scale(1.1) translateY(-2px);
+  }
+
+  20% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
